@@ -18,28 +18,28 @@ locals {
 }
 
 module "yaml_str" {
-  source = "../"
+  source = "../../"
 
   paths = local.paths
   json_or_yaml_str = local.from_yaml_str
 }
 
 module "json_str" {
-  source = "../"
+  source = "../../"
 
   paths = local.paths
   json_or_yaml_str = local.from_json_str
 }
 
 module "json_decoded" {
-  source = "../"
+  source = "../../"
 
   paths = local.paths
   tf_object = local.from_json_decode
 }
 
 module "tf_obj" {
-  source = "../"
+  source = "../../"
 
   paths = local.paths
   tf_object = local.from_obj
