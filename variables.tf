@@ -3,14 +3,14 @@ variable "paths" {
   description = "list of dotted paths into the json"
 }
 
-variable "json_str" {
+variable "json_or_yaml_str" {
   type        = string
-  description = "The json string to traverse"
+  description = "The json or yaml string to traverse"
   default     = null
 }
 
-variable "json" {
+variable "tf_object" {
   type        = any
-  description = "The json map to traverse (used if json_str is null)"
+  description = "The terraform object to query (used if json_or_yaml_str is null or does not parse)"
   default     = {}
 }
