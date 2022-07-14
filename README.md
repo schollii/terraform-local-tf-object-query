@@ -5,19 +5,21 @@ Dynamically / programmatically get one or more elements from a terraform object(
 
 Eg given the following terraform object 
 ```terraform
-root = {
-  a = {
-    b = {
-      c = 123
+locals {
+    root = {
+      a = {
+        b = {
+          c = 123
+        }
+      }
     }
-  }
+    root_query_path = "a.b.c"
 }
-root_query_path = "a.b.c"
 ```
-you CANNOT write 
+you CANNOT get the value of `root.a.b.c` via the programmatically defined `local.root_query_path`: 
 ```terraform
 locals {
-  c_value = local.root[local.root_query_path]
+  c_value = local.root[local.root_query_path]  // ERROR terraform does not support this
 }
 ```
 BUT you CAN write 
@@ -34,4 +36,4 @@ locals {
 }
 ```
 
-This module is should only be used when the path you want to query is not hardcoded. 
+This module should only be used when the path you want to query is not hardcoded. 
