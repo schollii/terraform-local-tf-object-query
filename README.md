@@ -22,7 +22,7 @@ locals {
   c_value = local.root[local.root_query_path]  // ERROR terraform does not support this
 }
 ```
-BUT you CAN write 
+BUT now with this module you CAN write 
 ```terraform
 module "your_obj_paths" {
   source = "schollii/tf-object-query/local"
