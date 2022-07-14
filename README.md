@@ -25,7 +25,7 @@ locals {
 BUT you CAN write 
 ```terraform
 module "your_obj_paths" {
-  source = <path-to-tf-object-query-module>
+  source = "schollii/tf-object-query/local"
   
   paths = [local.root_query_path]
   tf_object = local.root
@@ -36,4 +36,15 @@ locals {
 }
 ```
 
+You can specify multiple query paths. The result is a map of the query paths to the element at
+the path. Each element can be an arbtrarily complex terraform object. 
+
 This module should only be used when the path you want to query is not hardcoded. 
+
+**_Current limitation_**: only 6 levels are supported. Eg `a.b.c.d.e.f` is the deepest, but extra level 
+will not be queried. More levels could be added easily but there is a performance cost. 
+Also, there will not be error, tf apply will (incorrectly) succeed. 
+
+TODO: add code to fail if more than 6 levels. 
+
+TODO: add code to only do the try blocks if level exists
